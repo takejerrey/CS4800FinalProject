@@ -3,7 +3,7 @@ public class DriverTimeShift
     /**
      * Represents the shift a driver begins working at.
      */
-    enum Shift {
+    public enum Shift {
         /**
          * 8AM - 4PM
          */

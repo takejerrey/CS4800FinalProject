@@ -1,6 +1,6 @@
 public class DietaryRestriction
 {
-    enum DietPlan {
+    public enum DietPlan {
         NO_RESTRICTION,
         PALEO,
         VEGAN,
