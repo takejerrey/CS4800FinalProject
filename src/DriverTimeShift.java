@@ -5,17 +5,17 @@ public class DriverTimeShift
      */
     public enum Shift {
         /**
-         * 8AM - 4PM
+         * Shift from 8AM to 4PM.
          */
         MORNING,
 
         /**
-         * 4PM - 12AM
+         * Shift from 4PM to 12AM.
          */
         AFTERNOON,
 
         /**
-         * 12AM - 8AM
+         * Shift from 12AM to 8AM.
          */
         MIDNIGHT
     }
