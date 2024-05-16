@@ -17,7 +17,7 @@ public class FatFactory extends MacronutrientFactory {
         int num;
         switch (dietPlan) {
             case "Paleo":
-                num = rand.nextInt(2);
+                num = rand.nextInt(3);
                 switch (num) {
                     case 0:
                         return new Fat("Avocado");
@@ -27,7 +27,7 @@ public class FatFactory extends MacronutrientFactory {
                         return new Fat("Peanuts");
                 }
             case "Vegan":
-                num = rand.nextInt(1);
+                num = rand.nextInt(2);
                 switch (num) {
                     case 0:
                         return new Fat("Avocado");
@@ -35,7 +35,7 @@ public class FatFactory extends MacronutrientFactory {
                         return new Fat("Peanuts");
                     }
             case "Nut Allergy":
-                num = rand.nextInt(2);
+                num = rand.nextInt(3);
                 switch (num) {
                     case 0:
                         return new Fat("Avocado");
@@ -45,7 +45,7 @@ public class FatFactory extends MacronutrientFactory {
                         return new Fat("Tuna");
                     }
             default:
-                num = rand.nextInt(3);
+                num = rand.nextInt(4);
                 switch (num) {
                     case 0:
                         return new Fat("Avocado");

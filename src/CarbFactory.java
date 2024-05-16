@@ -19,7 +19,7 @@ public class CarbFactory extends MacronutrientFactory {
             case "Paleo":
                 return new Carb("Pistachio");
             case "Vegan":
-                num = rand.nextInt(2);
+                num = rand.nextInt(3);
                 switch (num) {
                     case 0:
                         return new Carb("Bread");
@@ -29,7 +29,7 @@ public class CarbFactory extends MacronutrientFactory {
                         return new Carb("Pistachio");
                 }
             case "Nut Allergy":
-                num = rand.nextInt(2);
+                num = rand.nextInt(3);
                 switch (num) {
                     case 0:
                         return new Carb("Cheese");
@@ -39,7 +39,7 @@ public class CarbFactory extends MacronutrientFactory {
                         return new Carb("Lentils");
                 }
             default:
-                num = rand.nextInt(3);
+                num = rand.nextInt(4);
                 switch (num) {
                     case 0:
                         return new Carb("Cheese");

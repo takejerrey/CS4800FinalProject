@@ -17,7 +17,7 @@ public class ProteinFactory extends MacronutrientFactory {
         int num;
         switch (dietPlan) {
             case "Paleo":
-                num = rand.nextInt(2);
+                num = rand.nextInt(3);
                 switch (num) {
                     case 0:
                         return new Protein("Fish");
@@ -29,7 +29,7 @@ public class ProteinFactory extends MacronutrientFactory {
             case "Vegan":
                 return new Protein("Tofu");
             default:
-                num = rand.nextInt(3);
+                num = rand.nextInt(4);
                 switch (num) {
                     case 0:
                         return new Protein("Fish");
