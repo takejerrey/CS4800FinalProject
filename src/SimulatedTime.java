@@ -20,9 +20,14 @@ public class SimulatedTime
         return instance;
     }
 
+    /**
+     * Increments time by 15 minutes.
+     * Minutes are always within 0-60.
+     * Hours are always within 0-24.
+     */
     public void updateTime()
     {
-        minutes += 10;
+        minutes += 15;
 
         if (minutes >= 60)
         {
