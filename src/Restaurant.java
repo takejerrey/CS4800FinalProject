@@ -1,4 +1,4 @@
-public abstract class Restaurant {
+public class Restaurant {
     private String name;
     private String address;
     private County.Area operatingCounty;
