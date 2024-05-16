@@ -1,3 +1,3 @@
 public abstract class FoodFactory {
-    abstract Food getFood(String dietPlan);
+    abstract Food getFood(String name, DietaryRestriction.DietPlan dietPlan);
 }

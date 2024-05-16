@@ -12,11 +12,11 @@ public class ProteinFactory extends MacronutrientFactory {
     }
 
     @Override
-    Macronutrient getMacronutrient(String dietPlan) {
+    Macronutrient getMacronutrient(DietaryRestriction.DietPlan dietPlan) {
         Random rand = new Random();
         int num;
         switch (dietPlan) {
-            case "Paleo":
+            case PALEO:
                 num = rand.nextInt(3);
                 switch (num) {
                     case 0:
@@ -26,7 +26,7 @@ public class ProteinFactory extends MacronutrientFactory {
                     case 2:
                         return new Protein("Beef");
                 }
-            case "Vegan":
+            case VEGAN:
                 return new Protein("Tofu");
             default:
                 num = rand.nextInt(4);
