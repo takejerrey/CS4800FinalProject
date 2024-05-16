@@ -24,7 +24,7 @@ public class Menu {
         return null;
     }
 
-    public void addTopping(Topping item) {
+    public void addToppingItem(Topping item) {
         extraToppings.add(item);
     }
 
