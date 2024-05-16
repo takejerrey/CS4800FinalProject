@@ -56,4 +56,9 @@ public class SimulatedTime
     {
         return String.format("SYSTEM TIME: [%02d:%02d]", hour, minutes);
     }
+
+    public TimeStamp toTimeStamp()
+    {
+        return new TimeStamp(hour, minutes);
+    }
 }

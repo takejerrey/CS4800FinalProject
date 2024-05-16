@@ -22,4 +22,22 @@ public class TimeStamp
     {
         return minutes;
     }
+
+    public static boolean isWithinRange(TimeStamp time, TimeStamp start, TimeStamp end)
+    {
+        int timeInMinutes = time.hour * 60 + time.minutes;
+        int startInMinutes = start.hour * 60 + start.minutes;
+        int endInMinutes = end.hour * 60 + end.minutes;
+
+        if (startInMinutes <= endInMinutes)
+        {
+            return startInMinutes <= timeInMinutes && timeInMinutes <= endInMinutes;
+        }
+
+        // Handles midnight cases
+        else
+        {
+            return startInMinutes <= timeInMinutes || timeInMinutes <= endInMinutes;
+        }
+    }
 }
