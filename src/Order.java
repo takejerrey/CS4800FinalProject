@@ -8,9 +8,7 @@ public class Order {
 
     private final ArrayList<Food> foodItems;
 
-    private final TimeStamp creationTime = new TimeStamp(
-            SimulatedTime.getInstance().getHour(),
-            SimulatedTime.getInstance().getMinutes());
+    private final TimeStamp creationTime = SimulatedTime.getInstance().toTimeStamp();
     private TimeStamp pickupTime;
     private TimeStamp deliveryTime;
     
@@ -41,15 +39,13 @@ public class Order {
 
     public void simulatePickup()
     {
-        SimulatedTime currentTime = SimulatedTime.getInstance();
-        currentTime.updateTime();
-        this.pickupTime = new TimeStamp(currentTime.getHour(), currentTime.getMinutes());
+        SimulatedTime.getInstance().updateTime();
+        this.pickupTime = SimulatedTime.getInstance().toTimeStamp();
     }
 
     public void simulateDelivery() {
-        SimulatedTime currentTime = SimulatedTime.getInstance();
-        currentTime.updateTime();
-        this.deliveryTime = new TimeStamp(currentTime.getHour(), currentTime.getMinutes());
+        SimulatedTime.getInstance().updateTime();
+        this.deliveryTime = SimulatedTime.getInstance().toTimeStamp();
     }
 
     public Restaurant getRestaurant()
