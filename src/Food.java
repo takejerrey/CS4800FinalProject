@@ -22,4 +22,19 @@ public abstract class Food {
     {
         return name;
     }
-} 
+
+    public Macronutrient getCarb()
+    {
+        return carb;
+    }
+
+    public Macronutrient getProtein()
+    {
+        return protein;
+    }
+
+    public Macronutrient getFat()
+    {
+        return fat;
+    }
+}
