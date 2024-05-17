@@ -50,7 +50,8 @@ class CPPFoodDelivery {
         }
 
         System.out.println("Order placed with " + restaurant.getName() + " at " + currentTime);
-        Order order = new Order(restaurant, customer, findDriver(new TimeStamp(currentTime.getHour(), currentTime.getMinutes())));
+        Order order = new Order(restaurant, customer,
+                findDriver(restaurant.getOperatingCounty(), new TimeStamp(currentTime.getHour(), currentTime.getMinutes())));
 
         for (Food food : foodList)
         {
@@ -73,14 +74,17 @@ class CPPFoodDelivery {
         }
     }
 
-    private Driver findDriver(TimeStamp timestamp)
+    private Driver findDriver(County.Area county, TimeStamp timestamp)
     {
         SimulatedTime currentTime = SimulatedTime.getInstance();
         List<Driver> validDrivers = new ArrayList<>();
 
         for (Driver driver : drivers)
         {
-            if (TimeStamp.isWithinRange(currentTime.toTimeStamp(), driver.getShiftStart(), driver.getShiftEnd()))
+            // Need to be working the current time, and need to be working in the restaurants county
+            if (TimeStamp.isWithinRange(currentTime.toTimeStamp(), driver.getShiftStart(), driver.getShiftEnd())
+            && county.equals(driver.getOperatingCounty())
+            )
             {
                 validDrivers.add(driver);
             }
