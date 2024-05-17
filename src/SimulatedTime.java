@@ -22,8 +22,8 @@ public class SimulatedTime
 
     /**
      * Increments time by 15 minutes.
-     * Minutes are always within 0-60.
-     * Hours are always within 0-24.
+     * Minutes are always within [0-60).
+     * Hours are always within [0-24).
      */
     public void updateTime()
     {
