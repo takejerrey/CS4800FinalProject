@@ -1,4 +1,4 @@
-public class Restaurant {
+public abstract class Restaurant {
     private String name;
     private String address;
     private County.Area operatingCounty;
@@ -82,9 +82,10 @@ public class Restaurant {
      */
     public Food getFoodByName(String name)
     {
+        name = name.toLowerCase();
         for (Food food : restaurantMenu.getMenuItems())
         {
-            if (food.getName().equals(name))
+            if (food.getName().toLowerCase().equals(name))
             {
                 return food;
             }
@@ -92,7 +93,7 @@ public class Restaurant {
 
         for (Topping topping : restaurantMenu.getExtraToppings())
         {
-            if (topping.getName().equals(name))
+            if (topping.getName().toLowerCase().equals(name))
             {
                 return topping;
             }
@@ -107,18 +108,5 @@ public class Restaurant {
         restaurantMenu.addMenuItem(food);
     }
 
-    public void addToppingItem(String foodName, String toppingName)
-    {
-        Topping addition = null;
-        Food existingMenuItem = getFoodByName(foodName);
-
-        switch (toppingName)
-        {
-            case "Cheese":
-                addition = new Cheese(existingMenuItem, "Cheeseburger", 1.00);
-                break;
-        }
-
-        restaurantMenu.addToppingItem(addition);
-    }
+    abstract public void addToppingItem(String foodName, String toppingName);
 }
