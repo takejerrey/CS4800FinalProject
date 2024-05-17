@@ -2,7 +2,7 @@ public class ChickenFactory extends FoodFactory
 {
     private static ChickenFactory factory = null;
 
-    ChickenFactory(){}
+    private ChickenFactory(){}
 
     public static ChickenFactory getInstance() {
         if(factory == null)
@@ -12,7 +12,7 @@ public class ChickenFactory extends FoodFactory
     @Override
     Food getFood(double price, String name, DietaryRestriction.DietPlan dietPlan)
     {
-        return new Chicken(price, name, new CarbFactory().getMacronutrient(dietPlan),
-                new CarbFactory().getMacronutrient(dietPlan), new CarbFactory().getMacronutrient(dietPlan));
+        return new Chicken(price, name, CarbFactory.getInstance().getMacronutrient(dietPlan),
+                ProteinFactory.getInstance().getMacronutrient(dietPlan), FatFactory.getInstance().getMacronutrient(dietPlan));
     }
 }

@@ -3,7 +3,7 @@ import java.util.Random;
 public class FatFactory extends MacronutrientFactory {
     private static FatFactory factory = null;
 
-    FatFactory(){}
+    private FatFactory(){}
 
     public static FatFactory getInstance() {
         if(factory == null)
