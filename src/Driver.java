@@ -3,14 +3,16 @@ public abstract class Driver
     private String name;
     private String address;
     private County.Area operatingCounty;
-    private DriverTimeShift.Shift workShift;
+    private TimeStamp shiftStart;
+    private TimeStamp shiftEnd;
 
-    public Driver(String name, String address, County.Area operatingCounty, DriverTimeShift.Shift workShift)
+    public Driver(String name, String address, County.Area operatingCounty, int shiftStartHour, int shiftEndHour)
     {
         this.name = name;
         this.address = address;
         this.operatingCounty = operatingCounty;
-        this.workShift = workShift;
+        this.shiftStart = new TimeStamp(shiftStartHour, 0);
+        this.shiftEnd = new TimeStamp(shiftEndHour, 0);
     }
 
     abstract void deliverFood(Order order);
@@ -45,13 +47,23 @@ public abstract class Driver
         this.operatingCounty = operatingCounty;
     }
 
-    public DriverTimeShift.Shift getWorkShift()
+    public TimeStamp getShiftStart()
     {
-        return workShift;
+        return shiftStart;
     }
 
-    public void setWorkShift(DriverTimeShift.Shift workShift)
+    public void setShiftStart(TimeStamp shiftStart)
     {
-        this.workShift = workShift;
+        this.shiftStart = shiftStart;
+    }
+
+    public TimeStamp getShiftEnd()
+    {
+        return shiftEnd;
+    }
+
+    public void setShiftEnd(TimeStamp shiftEnd)
+    {
+        this.shiftEnd = shiftEnd;
     }
 }

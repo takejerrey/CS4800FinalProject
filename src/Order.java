@@ -1,12 +1,21 @@
-import java.util.ArrayList; 
+import java.util.ArrayList;
 import java.text.DecimalFormat; 
 
 public class Order {
-    private ArrayList<Food> foodItems;
-    private Customer customer;
+    private final Restaurant restaurant;
+    private final Customer customer;
+    private final Driver driver;
+
+    private final ArrayList<Food> foodItems;
+
+    private final TimeStamp creationTime = SimulatedTime.getInstance().toTimeStamp();
+    private TimeStamp pickupTime;
+    private TimeStamp deliveryTime;
     
-    public Order(Customer customer) {
+    public Order(Restaurant restaurant, Customer customer, Driver driver) {
+        this.restaurant = restaurant;
         this.customer = customer;
+        this.driver = driver;
         foodItems = new ArrayList<Food>();
     }
     
@@ -27,4 +36,45 @@ public class Order {
         }
         return totalCost;
     }
-} 
+
+    public void simulatePickup()
+    {
+        SimulatedTime.getInstance().updateTime();
+        this.pickupTime = SimulatedTime.getInstance().toTimeStamp();
+    }
+
+    public void simulateDelivery() {
+        SimulatedTime.getInstance().updateTime();
+        this.deliveryTime = SimulatedTime.getInstance().toTimeStamp();
+    }
+
+    public Restaurant getRestaurant()
+    {
+        return restaurant;
+    }
+
+    public Customer getCustomer()
+    {
+        return customer;
+    }
+
+    public Driver getDriver()
+    {
+        return driver;
+    }
+
+    public TimeStamp getCreationTime()
+    {
+        return creationTime;
+    }
+
+    public TimeStamp getPickupTime()
+    {
+        return pickupTime;
+    }
+
+    public TimeStamp getDeliveryTime()
+    {
+        return deliveryTime;
+    }
+}

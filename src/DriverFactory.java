@@ -1,13 +1,21 @@
 public class DriverFactory
 {
     public static Driver getDriver(String name, String address,
-                                   County.Area operatingCounty, DriverTimeShift.Shift workShift)
+                                   County.Area operatingCounty, int shiftStartHour, int shiftEndHour)
     {
-        return switch (workShift)
+        if (shiftStartHour >= 8 && shiftStartHour <= 16)
         {
-            case MORNING -> new MorningDriver(name, address, operatingCounty, workShift);
-            case AFTERNOON -> new AfternoonDriver(name, address, operatingCounty, workShift);
-            case MIDNIGHT -> new MidnightDriver(name, address, operatingCounty, workShift);
-        };
+            return new MorningDriver(name, address, operatingCounty, shiftStartHour, shiftEndHour);
+        }
+
+        else if (shiftStartHour >= 16)
+        {
+            return new AfternoonDriver(name, address, operatingCounty, shiftStartHour, shiftEndHour);
+        }
+
+        else
+        {
+            return new MidnightDriver(name, address, operatingCounty, shiftStartHour, shiftEndHour);
+        }
     }
 }

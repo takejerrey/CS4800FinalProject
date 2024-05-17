@@ -12,14 +12,14 @@ public class CarbFactory extends MacronutrientFactory {
     }
 
     @Override
-    Macronutrient getMacronutrient(String dietPlan) {
+    Macronutrient getMacronutrient(DietaryRestriction.DietPlan dietPlan) {
         Random rand = new Random();
         int num;
         switch (dietPlan) {
-            case "Paleo":
+            case PALEO:
                 return new Carb("Pistachio");
-            case "Vegan":
-                num = rand.nextInt(2);
+            case VEGAN:
+                num = rand.nextInt(3);
                 switch (num) {
                     case 0:
                         return new Carb("Bread");
@@ -28,8 +28,8 @@ public class CarbFactory extends MacronutrientFactory {
                     case 2:
                         return new Carb("Pistachio");
                 }
-            case "Nut Allergy":
-                num = rand.nextInt(2);
+            case NUT_ALLERGY:
+                num = rand.nextInt(3);
                 switch (num) {
                     case 0:
                         return new Carb("Cheese");
@@ -39,7 +39,7 @@ public class CarbFactory extends MacronutrientFactory {
                         return new Carb("Lentils");
                 }
             default:
-                num = rand.nextInt(3);
+                num = rand.nextInt(4);
                 switch (num) {
                     case 0:
                         return new Carb("Cheese");

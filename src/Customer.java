@@ -1,17 +1,15 @@
-public abstract class Customer {
+public class Customer {
     private String name;
     private String address;
-    private County.Area operatingCounty;
+    private County.Area county;
     private DietaryRestriction.DietPlan diet;
 
-    public Customer(String name, String address, County.Area operatingCounty, DietaryRestriction.DietPlan diet) {
+    public Customer(String name, String address, County.Area county, DietaryRestriction.DietPlan diet) {
         this.name = name;
         this.address = address;
-        this.operatingCounty = operatingCounty;
+        this.county = county;
         this.diet = diet;
     }
-
-    abstract void orderFood(Restaurant restaurant);
 
     public String getName() {
         return name;
@@ -29,12 +27,12 @@ public abstract class Customer {
         this.address = address;
     }
 
-    public County.Area getOperatingCountry() {
-        return operatingCounty;
+    public County.Area getCounty() {
+        return county;
     }
 
-    public void setOperatingCounty(County.Area operatingCounty) {
-        this.operatingCounty = operatingCounty;
+    public void setCounty(County.Area county) {
+        this.county = county;
     }
 
     public DietaryRestriction.DietPlan getDiet() {

@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-public abstract class Menu {
+public class Menu {
     private ArrayList<Food> menuItems;
     private ArrayList<Topping> extraToppings;
 
@@ -14,15 +14,17 @@ public abstract class Menu {
     }
 
     public Food orderMenuItem(String item) {
-        for(int i = 0; i < menuItems.size(); i++) {
-            if(menuItems.get(i).getName().equals(item)) {
-                return menuItems.get(i);
+        for (Food menuItem : menuItems)
+        {
+            if (menuItem.getName().equals(item))
+            {
+                return menuItem;
             }
         }
         return null;
     }
 
-    public void addTopping(Topping item) {
+    public void addToppingItem(Topping item) {
         extraToppings.add(item);
     }
 

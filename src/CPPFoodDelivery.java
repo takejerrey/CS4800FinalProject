@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 class CPPFoodDelivery {
     private static CPPFoodDelivery instance;
@@ -29,4 +30,72 @@ class CPPFoodDelivery {
         drivers.add(driver);
     }
 
+    public void placeOrder(Restaurant restaurant, Customer customer, List<Food> foodList)
+    {
+        // Check if parameters are registered
+        if (!restaurants.contains(restaurant) || !customers.contains(customer))
+        {
+            System.out.println("Restaurant " + restaurant.getName() +
+                    " or customer " + customer.getName() + " not registered with system.");
+            return;
+        }
+
+        SimulatedTime currentTime = SimulatedTime.getInstance();
+
+        // Check if restaurant is open
+        if (!TimeStamp.isWithinRange(currentTime.toTimeStamp(), restaurant.getOpenTime(), restaurant.getCloseTime()))
+        {
+            System.out.println(restaurant.getName() + " is closed!");
+            return;
+        }
+
+        System.out.println("Order placed with " + restaurant.getName() + " at " + currentTime);
+        Order order = new Order(restaurant, customer,
+                findDriver(restaurant.getOperatingCounty(), new TimeStamp(currentTime.getHour(), currentTime.getMinutes())));
+
+        for (Food food : foodList)
+        {
+            order.addFood(food);
+        }
+
+        System.out.println("Order cost: $" + String.format("%.2f", order.getTotalOrderCost()));
+
+        order.simulatePickup();
+        System.out.println("Order picked up by " + order.getDriver().getName() + " at " + currentTime);
+
+        order.simulateDelivery();
+        System.out.println("Order delivered by " + order.getDriver().getName() + " at " + currentTime);
+
+        System.out.println("Order contents: ");
+
+        for (Food food : foodList)
+        {
+            System.out.println("[" + food.getName() + "]");
+        }
+    }
+
+    private Driver findDriver(County.Area county, TimeStamp timestamp)
+    {
+        SimulatedTime currentTime = SimulatedTime.getInstance();
+        List<Driver> validDrivers = new ArrayList<>();
+
+        for (Driver driver : drivers)
+        {
+            // Need to be working the current time, and need to be working in the restaurants county
+            if (TimeStamp.isWithinRange(currentTime.toTimeStamp(), driver.getShiftStart(), driver.getShiftEnd())
+            && county.equals(driver.getOperatingCounty())
+            )
+            {
+                validDrivers.add(driver);
+            }
+        }
+
+        if (validDrivers.isEmpty())
+        {
+            System.out.println("No drivers found!");
+            return null;
+        }
+
+        return validDrivers.get(new Random().nextInt(validDrivers.size()));
+    }
 }

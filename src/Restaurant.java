@@ -1,16 +1,18 @@
-public abstract class Restaurant {
+public class Restaurant {
     private String name;
     private String address;
     private County.Area operatingCounty;
-    private RestaurantHours.Hours operatingHours;
+    private TimeStamp openTime;
+    private TimeStamp closeTime;
     private String cuisineType;
     private Menu restaurantMenu;
 
-    public Restaurant(String name, String address, County.Area operatingCounty, RestaurantHours.Hours operatingHours, String cuisineType, Menu restaurantMenu) {
+    public Restaurant(String name, String address, County.Area operatingCounty, int openingHour, int closingHour, String cuisineType, Menu restaurantMenu) {
         this.name = name;
         this.address = address;
         this.operatingCounty = operatingCounty;
-        this.operatingHours = operatingHours;
+        this.openTime = new TimeStamp(openingHour, 0);
+        this.closeTime = new TimeStamp(closingHour, 0);
         this.cuisineType = cuisineType;
         this.restaurantMenu = restaurantMenu;
     }
@@ -39,12 +41,24 @@ public abstract class Restaurant {
         this.operatingCounty = operatingCounty;
     }
 
-    public RestaurantHours.Hours getOperatingHours() {
-        return operatingHours;
+    public TimeStamp getOpenTime()
+    {
+        return openTime;
     }
 
-    public void setOperatingHours(RestaurantHours.Hours operatingHours) {
-        this.operatingHours = operatingHours;
+    public void setOpenTime(TimeStamp openTime)
+    {
+        this.openTime = openTime;
+    }
+
+    public TimeStamp getCloseTime()
+    {
+        return closeTime;
+    }
+
+    public void setCloseTime(TimeStamp closeTime)
+    {
+        this.closeTime = closeTime;
     }
 
     public String getCuisineType() {
