@@ -36,4 +36,14 @@ public class Menu {
         }
         return null;
     }
+
+    public ArrayList<Food> getMenuItems()
+    {
+        return menuItems;
+    }
+
+    public ArrayList<Topping> getExtraToppings()
+    {
+        return extraToppings;
+    }
 }
