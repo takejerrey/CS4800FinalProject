@@ -7,14 +7,14 @@ public class Restaurant {
     private String cuisineType;
     private Menu restaurantMenu;
 
-    public Restaurant(String name, String address, County.Area operatingCounty, int openingHour, int closingHour, String cuisineType, Menu restaurantMenu) {
+    public Restaurant(String name, String address, County.Area operatingCounty, int openingHour, int closingHour, String cuisineType) {
         this.name = name;
         this.address = address;
         this.operatingCounty = operatingCounty;
         this.openTime = new TimeStamp(openingHour, 0);
         this.closeTime = new TimeStamp(closingHour, 0);
         this.cuisineType = cuisineType;
-        this.restaurantMenu = restaurantMenu;
+        this.restaurantMenu = new Menu();
     }
 
     public String getName() {
@@ -75,5 +75,50 @@ public class Restaurant {
 
     public void setRestaurantMenu(Menu restaurantMenu) {
         this.restaurantMenu = restaurantMenu;
+    }
+
+    /**
+     * Checks for food in both normal existing menu items and existing topping items.
+     */
+    public Food getFoodByName(String name)
+    {
+        for (Food food : restaurantMenu.getMenuItems())
+        {
+            if (food.getName().equals(name))
+            {
+                return food;
+            }
+        }
+
+        for (Topping topping : restaurantMenu.getExtraToppings())
+        {
+            if (topping.getName().equals(name))
+            {
+                return topping;
+            }
+        }
+
+        System.out.println("Food " + name + " not found!");
+        return null;
+    }
+
+    public void addMenuItem(Food food)
+    {
+        restaurantMenu.addMenuItem(food);
+    }
+
+    public void addToppingItem(String foodName, String toppingName)
+    {
+        Topping addition = null;
+        Food existingMenuItem = getFoodByName(foodName);
+
+        switch (toppingName)
+        {
+            case "Cheese":
+                addition = new Cheese(existingMenuItem, "Cheeseburger", 1.00);
+                break;
+        }
+
+        restaurantMenu.addToppingItem(addition);
     }
 }
