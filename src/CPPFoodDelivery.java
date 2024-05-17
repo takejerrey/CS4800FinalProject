@@ -48,7 +48,14 @@ class CPPFoodDelivery {
         order.simulateDelivery();
         System.out.println("Order delivered by " + order.getDriver().getName() + " at " + currentTime);
 
-        System.out.println("Order contents: [" + foodList + "]");
+        System.out.println("Order cost: $" + String.format("%.2f", order.getTotalOrderCost()));
+
+        System.out.println("Order contents: ");
+
+        for (Food food : foodList)
+        {
+            System.out.println("[" + food.getName() + "]");
+        }
     }
 
     private Driver findDriver(TimeStamp timestamp)
