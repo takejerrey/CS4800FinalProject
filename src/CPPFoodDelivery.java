@@ -49,7 +49,7 @@ class CPPFoodDelivery {
             return;
         }
 
-        System.out.println("Order placed with " + restaurant.getName() + " at " + currentTime);
+        System.out.println("Order placed by " + customer.getName() + " with " + restaurant.getName() + " at " + currentTime);
         Order order = new Order(restaurant, customer,
                 findDriver(restaurant.getOperatingCounty(), new TimeStamp(currentTime.getHour(), currentTime.getMinutes())));
 
@@ -61,10 +61,8 @@ class CPPFoodDelivery {
         System.out.println("Order cost: $" + String.format("%.2f", order.getTotalOrderCost()));
 
         order.simulatePickup();
-        System.out.println("Order picked up by " + order.getDriver().getName() + " at " + currentTime);
 
         order.simulateDelivery();
-        System.out.println("Order delivered by " + order.getDriver().getName() + " at " + currentTime);
 
         System.out.println("Order contents: ");
 
