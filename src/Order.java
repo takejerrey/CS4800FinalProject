@@ -40,11 +40,13 @@ public class Order {
     public void simulatePickup()
     {
         SimulatedTime.getInstance().updateTime();
+        driver.pickupFood(this);
         this.pickupTime = SimulatedTime.getInstance().toTimeStamp();
     }
 
     public void simulateDelivery() {
         SimulatedTime.getInstance().updateTime();
+        driver.deliverFood(this);
         this.deliveryTime = SimulatedTime.getInstance().toTimeStamp();
     }
 
