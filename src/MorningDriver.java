@@ -5,16 +5,4 @@ public class MorningDriver extends Driver
     {
         super(name, address, operatingCounty, shiftStartHour, shiftEndHour);
     }
-
-    @Override
-    void pickupFood(Order order)
-    {
-        System.out.println("Morning order picked up.");
-    }
-
-    @Override
-    void deliverFood(Order order)
-    {
-        System.out.println("Morning order delivered.");
-    }
 }

@@ -15,9 +15,17 @@ public abstract class Driver
         this.shiftEnd = new TimeStamp(shiftEndHour, 0);
     }
 
-    abstract void pickupFood(Order order);
-    
-    abstract void deliverFood(Order order);
+    public void pickupFood(Order order)
+    {
+        System.out.println("Order for " + order.getCustomer().getName() +
+                " picked up by " + name + " at " + SimulatedTime.getInstance().toTimeStamp());
+    }
+
+    public void deliverFood(Order order)
+    {
+        System.out.println("Order for " + order.getCustomer().getName() +
+                " delivered by " + name + " at " + SimulatedTime.getInstance().toTimeStamp());
+    }
 
     public String getName()
     {
