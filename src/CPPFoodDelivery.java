@@ -42,13 +42,13 @@ class CPPFoodDelivery {
             order.addFood(food);
         }
 
+        System.out.println("Order cost: $" + String.format("%.2f", order.getTotalOrderCost()));
+
         order.simulatePickup();
         System.out.println("Order picked up by " + order.getDriver().getName() + " at " + currentTime);
 
         order.simulateDelivery();
         System.out.println("Order delivered by " + order.getDriver().getName() + " at " + currentTime);
-
-        System.out.println("Order cost: $" + String.format("%.2f", order.getTotalOrderCost()));
 
         System.out.println("Order contents: ");
 
