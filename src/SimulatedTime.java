@@ -41,6 +41,24 @@ public class SimulatedTime
         }
     }
 
+    public void setTime(int hour, int minutes)
+    {
+        if (hour >= 0 && hour < 24)
+        {
+            this.hour = hour;
+        }
+
+        else
+        {
+            this.hour = 0;
+        }
+
+        if (minutes >= 0 && minutes < 60)
+        {
+            this.minutes = minutes;
+        }
+    }
+
     public int getHour()
     {
         return hour;
