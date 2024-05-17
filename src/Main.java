@@ -5,30 +5,30 @@ public class Main {
         // Register Restaurants
         app.registerRestaurant(new Chilis("Chili's", "001", County.Area.LA_COUNTY, 8, 20, "Tex-Mex"));
         app.registerRestaurant(new Applebees("Applebees", "002", County.Area.LA_COUNTY, 10, 22, "American"));
-        app.registerRestaurant(new WaffleHouse("WaffleHouse", "003", County.Area.LA_COUNTY, 6, 24, "Breakfast"));
-        app.registerRestaurant(new RedLobster("RedLobster", "004", County.Area.LA_COUNTY, 11, 23, "Seafood"));
+        app.registerRestaurant(new WaffleHouse("WaffleHouse", "003", County.Area.SAN_BERNARDINO_COUNTY, 6, 24, "Breakfast"));
+        app.registerRestaurant(new RedLobster("RedLobster", "004", County.Area.ORANGE_COUNTY, 11, 23, "Seafood"));
 
         // Register Drivers
         app.registerDriver(DriverFactory.getDriver("D1", "101", County.Area.LA_COUNTY, 8, 16));
-        app.registerDriver(DriverFactory.getDriver("D2", "102", County.Area.LA_COUNTY, 9, 17));
-        app.registerDriver(DriverFactory.getDriver("D3", "103", County.Area.LA_COUNTY, 10, 18));
-        app.registerDriver(DriverFactory.getDriver("D4", "104", County.Area.LA_COUNTY, 11, 19));
-        app.registerDriver(DriverFactory.getDriver("D5", "105", County.Area.LA_COUNTY, 12, 20));
-        app.registerDriver(DriverFactory.getDriver("D6", "106", County.Area.LA_COUNTY, 13, 21));
-        app.registerDriver(DriverFactory.getDriver("D7", "107", County.Area.LA_COUNTY, 14, 22));
-        app.registerDriver(DriverFactory.getDriver("D8", "108", County.Area.LA_COUNTY, 15, 23));
+        app.registerDriver(DriverFactory.getDriver("D2", "102", County.Area.LA_COUNTY, 16, 0));
+        app.registerDriver(DriverFactory.getDriver("D3", "103", County.Area.LA_COUNTY, 0, 8));
+        app.registerDriver(DriverFactory.getDriver("D4", "104", County.Area.SAN_BERNARDINO_COUNTY, 8, 16));
+        app.registerDriver(DriverFactory.getDriver("D5", "105", County.Area.SAN_BERNARDINO_COUNTY, 16, 0));
+        app.registerDriver(DriverFactory.getDriver("D6", "106", County.Area.SAN_BERNARDINO_COUNTY, 0, 8));
+        app.registerDriver(DriverFactory.getDriver("D7", "107", County.Area.ORANGE_COUNTY, 8, 16));
+        app.registerDriver(DriverFactory.getDriver("D8", "108", County.Area.ORANGE_COUNTY, 16, 0));
 
         // Register Customers
         app.registerCustomer(new Customer("C1", "201", County.Area.LA_COUNTY, DietaryRestriction.DietPlan.VEGAN));
         app.registerCustomer(new Customer("C2", "202", County.Area.LA_COUNTY, DietaryRestriction.DietPlan.PALEO));
         app.registerCustomer(new Customer("C3", "203", County.Area.LA_COUNTY, DietaryRestriction.DietPlan.NUT_ALLERGY));
         app.registerCustomer(new Customer("C4", "204", County.Area.LA_COUNTY, DietaryRestriction.DietPlan.NO_RESTRICTION));
-        app.registerCustomer(new Customer("C5", "205", County.Area.LA_COUNTY, DietaryRestriction.DietPlan.VEGAN));
-        app.registerCustomer(new Customer("C6", "206", County.Area.LA_COUNTY, DietaryRestriction.DietPlan.PALEO));
-        app.registerCustomer(new Customer("C7", "207", County.Area.LA_COUNTY, DietaryRestriction.DietPlan.NUT_ALLERGY));
-        app.registerCustomer(new Customer("C8", "208", County.Area.LA_COUNTY, DietaryRestriction.DietPlan.NO_RESTRICTION));
-        app.registerCustomer(new Customer("C9", "209", County.Area.LA_COUNTY, DietaryRestriction.DietPlan.VEGAN));
-        app.registerCustomer(new Customer("C10", "210", County.Area.LA_COUNTY, DietaryRestriction.DietPlan.PALEO));
+        app.registerCustomer(new Customer("C5", "205", County.Area.SAN_BERNARDINO_COUNTY, DietaryRestriction.DietPlan.VEGAN));
+        app.registerCustomer(new Customer("C6", "206", County.Area.SAN_BERNARDINO_COUNTY, DietaryRestriction.DietPlan.PALEO));
+        app.registerCustomer(new Customer("C7", "207", County.Area.SAN_BERNARDINO_COUNTY, DietaryRestriction.DietPlan.NUT_ALLERGY));
+        app.registerCustomer(new Customer("C8", "208", County.Area.ORANGE_COUNTY, DietaryRestriction.DietPlan.NO_RESTRICTION));
+        app.registerCustomer(new Customer("C9", "209", County.Area.ORANGE_COUNTY, DietaryRestriction.DietPlan.VEGAN));
+        app.registerCustomer(new Customer("C10", "210", County.Area.ORANGE_COUNTY, DietaryRestriction.DietPlan.PALEO));
 
         // Display Registered Restaurants
         app.displayRegisteredRestaurants();
@@ -43,7 +43,7 @@ public class Main {
         app.placeOrder("RedLobster", "C4", new String[]{"Grilled Salmon", "Lemon Grilled Salmon"});
 
         // Register more drivers and customers
-        app.registerDriver(DriverFactory.getDriver("D9", "109", County.Area.LA_COUNTY, 18, 0));
+        app.registerDriver(DriverFactory.getDriver("D9", "109", County.Area.LA_COUNTY, 16, 0));
         app.registerCustomer(new Customer("C11", "211", County.Area.LA_COUNTY, DietaryRestriction.DietPlan.VEGAN));
 
         // Set simulated time and place additional orders
