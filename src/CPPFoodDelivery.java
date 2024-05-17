@@ -151,4 +151,19 @@ class CPPFoodDelivery {
 
         return validDrivers.get(new Random().nextInt(validDrivers.size()));
     }
+
+    public List<Customer> getCustomers()
+    {
+        return customers;
+    }
+
+    public List<Restaurant> getRestaurants()
+    {
+        return restaurants;
+    }
+
+    public List<Driver> getDrivers()
+    {
+        return drivers;
+    }
 }
