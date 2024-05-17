@@ -15,6 +15,8 @@ public abstract class Driver
         this.shiftEnd = new TimeStamp(shiftEndHour, 0);
     }
 
+    abstract void pickupFood(Order order);
+    
     abstract void deliverFood(Order order);
 
     public String getName()

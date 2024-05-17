@@ -7,6 +7,12 @@ public class AfternoonDriver extends Driver
     }
 
     @Override
+    void pickupFood(Order order)
+    {
+        System.out.println("Afternoon order picked up.");
+    }
+
+    @Override
     void deliverFood(Order order)
     {
         System.out.println("Afternoon order delivered.");
