@@ -30,7 +30,7 @@ class CPPFoodDelivery {
         drivers.add(driver);
     }
 
-    public void placeOrder(Restaurant restaurant, Customer customer, List<Food> foodList)
+    public void placeOrder(Restaurant restaurant, Customer customer, String[] foodNames)
     {
         // Check if parameters are registered
         if (!restaurants.contains(restaurant) || !customers.contains(customer))
@@ -53,8 +53,9 @@ class CPPFoodDelivery {
         Order order = new Order(restaurant, customer,
                 findDriver(restaurant.getOperatingCounty()));
 
-        for (Food food : foodList)
+        for (String foodName : foodNames)
         {
+            Food food = restaurant.getFoodByName(foodName);
             order.addFood(food);
         }
 
@@ -66,7 +67,7 @@ class CPPFoodDelivery {
 
         System.out.println("Order contents: ");
 
-        for (Food food : foodList)
+        for (Food food : order.getFoodItems())
         {
             System.out.println("[" + food.getName() + "]");
         }
