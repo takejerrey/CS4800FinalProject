@@ -62,9 +62,9 @@ class CPPFoodDelivery {
 
         System.out.println("\n==================== Order Details ====================");
         System.out.println("Order placed by: " + customer.getName());
-        System.out.println("Restaurant: " + restaurant.getName());
-        System.out.println("Order time: " + currentTime);
-        System.out.println("Driver assigned: " + driver.getName());
+        System.out.println("Restaurant: " + restaurant.getName() + " (" + restaurant.getOperatingCounty() + ")");
+        System.out.println("Order time: " + currentTime.toTimeStamp());
+        System.out.println("Driver assigned: " + driver.getName() + " (" + driver.getOperatingCounty() + ")");
         System.out.println("=======================================================");
 
         Order order = new Order(restaurant, customer, driver);
