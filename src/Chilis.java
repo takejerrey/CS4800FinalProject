@@ -15,7 +15,7 @@ public class Chilis extends Restaurant
     @Override
     public void addToppingItem(String foodName, String toppingName)
     {
-        Topping addition = null;
+        Topping addition;
         Food existingMenuItem = getFoodByName(foodName);
         String newToppingName = toppingName + " " + existingMenuItem.getName();
 

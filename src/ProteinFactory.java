@@ -30,17 +30,14 @@ public class ProteinFactory extends MacronutrientFactory {
                 return new Protein("Tofu");
             default:
                 num = rand.nextInt(4);
-                switch (num) {
-                    case 0:
-                        return new Protein("Fish");
-                    case 1:
-                        return new Protein("Chicken");
-                    case 2:
-                        return new Protein("Beef");
-                    case 3:
-                        return new Protein("Tofu");
-                }
-                return null;
+                return switch (num)
+                {
+                    case 0 -> new Protein("Fish");
+                    case 1 -> new Protein("Chicken");
+                    case 2 -> new Protein("Beef");
+                    case 3 -> new Protein("Tofu");
+                    default -> null;
+                };
         }
     }
 
