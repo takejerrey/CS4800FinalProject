@@ -10,8 +10,8 @@ public class BurgerFactory extends FoodFactory {
     }
 
     @Override
-    Food getFood(String name, DietaryRestriction.DietPlan dietPlan) {
-        return new Burger(0, name, new CarbFactory().getMacronutrient(dietPlan),
+    Food getFood(double price, String name, DietaryRestriction.DietPlan dietPlan) {
+        return new Burger(price, name, new CarbFactory().getMacronutrient(dietPlan),
                 new CarbFactory().getMacronutrient(dietPlan), new CarbFactory().getMacronutrient(dietPlan));
     }
 }
