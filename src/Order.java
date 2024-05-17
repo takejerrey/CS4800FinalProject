@@ -16,7 +16,7 @@ public class Order {
         this.restaurant = restaurant;
         this.customer = customer;
         this.driver = driver;
-        foodItems = new ArrayList<Food>();
+        foodItems = new ArrayList<>();
     }
     
     public void addFood(Food food){

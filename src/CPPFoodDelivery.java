@@ -4,9 +4,9 @@ import java.util.Random;
 
 class CPPFoodDelivery {
     private static CPPFoodDelivery instance;
-    private List<Customer> customers = new ArrayList<>();
-    private List<Restaurant> restaurants = new ArrayList<>();
-    private List<Driver> drivers = new ArrayList<>();
+    private final List<Customer> customers = new ArrayList<>();
+    private final List<Restaurant> restaurants = new ArrayList<>();
+    private final List<Driver> drivers = new ArrayList<>();
 
     private CPPFoodDelivery() {
     }
@@ -51,7 +51,7 @@ class CPPFoodDelivery {
 
         System.out.println("Order placed by " + customer.getName() + " with " + restaurant.getName() + " at " + currentTime);
         Order order = new Order(restaurant, customer,
-                findDriver(restaurant.getOperatingCounty(), new TimeStamp(currentTime.getHour(), currentTime.getMinutes())));
+                findDriver(restaurant.getOperatingCounty()));
 
         for (Food food : foodList)
         {
@@ -72,7 +72,7 @@ class CPPFoodDelivery {
         }
     }
 
-    private Driver findDriver(County.Area county, TimeStamp timestamp)
+    private Driver findDriver(County.Area county)
     {
         SimulatedTime currentTime = SimulatedTime.getInstance();
         List<Driver> validDrivers = new ArrayList<>();
