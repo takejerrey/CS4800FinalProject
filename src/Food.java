@@ -4,13 +4,19 @@ public abstract class Food {
     private final Macronutrient carb;
     private final Macronutrient protein;
     private final Macronutrient fat;
+    private final FoodFactory factory;
 
-    public Food(double price, String name, Macronutrient carb, Macronutrient protein, Macronutrient fat) {
+    public Food(double price, String name, Macronutrient carb, Macronutrient protein, Macronutrient fat, FoodFactory factory) {
         this.price = price;
         this.name = name;
         this.carb = carb;
         this.protein = protein;
         this.fat = fat;
+        this.factory = factory;
+    }
+
+    public Food dietFood(Food food, DietaryRestriction.DietPlan diet) {
+        return factory.getFood(food.getPrice(), food.getName(), diet);
     }
 
     public double getPrice()
@@ -36,5 +42,10 @@ public abstract class Food {
     public Macronutrient getFat()
     {
         return fat;
+    }
+
+    public FoodFactory geFoodFactory()
+    {
+        return factory;
     }
 }

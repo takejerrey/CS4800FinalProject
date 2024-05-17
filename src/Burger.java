@@ -1,6 +1,6 @@
 public class Burger extends Food {
 
-    public Burger(double price, String name, Macronutrient carb, Macronutrient protein, Macronutrient fat) {
-        super(price, name, carb, protein, fat);
+    public Burger(double price, String name, Macronutrient carb, Macronutrient protein, Macronutrient fat, FoodFactory factory) {
+        super(price, name, carb, protein, fat, factory);
     }
 }

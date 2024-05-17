@@ -64,6 +64,7 @@ class CPPFoodDelivery {
         for (String foodName : foodNames)
         {
             Food food = restaurant.getFoodByName(foodName);
+            food = food.dietFood(food, customer.getDiet());
             order.addFood(food);
         }
 

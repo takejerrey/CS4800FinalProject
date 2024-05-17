@@ -13,6 +13,6 @@ public class ChickenFactory extends FoodFactory
     Food getFood(double price, String name, DietaryRestriction.DietPlan dietPlan)
     {
         return new Chicken(price, name, CarbFactory.getInstance().getMacronutrient(dietPlan),
-                ProteinFactory.getInstance().getMacronutrient(dietPlan), FatFactory.getInstance().getMacronutrient(dietPlan));
+                ProteinFactory.getInstance().getMacronutrient(dietPlan), FatFactory.getInstance().getMacronutrient(dietPlan), this);
     }
 }
