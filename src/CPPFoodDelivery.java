@@ -32,6 +32,13 @@ class CPPFoodDelivery {
 
     public void placeOrder(Restaurant restaurant, Customer customer, List<Food> foodList)
     {
+        // Check if parameters are registered
+        if (!restaurants.contains(restaurant) || !customers.contains(customer))
+        {
+            System.out.println("Restaurant or customer not registered with system.");
+            return;
+        }
+
         SimulatedTime currentTime = SimulatedTime.getInstance();
 
         System.out.println("Order placed with " + restaurant.getName() + " at " + currentTime);
