@@ -38,6 +38,11 @@ class CPPFoodDelivery {
 
         SimulatedTime currentTime = SimulatedTime.getInstance();
 
+        if (restaurant == null || customer == null)
+        {
+            return;
+        }
+
         // Check if restaurant is open
         if (!TimeStamp.isWithinRange(currentTime.toTimeStamp(), restaurant.getOpenTime(), restaurant.getCloseTime()))
         {
@@ -45,9 +50,16 @@ class CPPFoodDelivery {
             return;
         }
 
+        Driver driver = findDriver(restaurant.getOperatingCounty());
+
+        if (driver == null)
+        {
+            return;
+        }
+
         System.out.println("Order placed by " + customer.getName() + " with " + restaurant.getName() + " at " + currentTime);
-        Order order = new Order(restaurant, customer,
-                findDriver(restaurant.getOperatingCounty()));
+
+        Order order = new Order(restaurant, customer, driver);
 
         for (String foodName : foodNames)
         {
@@ -126,7 +138,7 @@ class CPPFoodDelivery {
 
         if (validDrivers.isEmpty())
         {
-            System.out.println("No drivers found!");
+            System.out.println("No drivers found for this county or time!");
             return null;
         }
 
