@@ -11,7 +11,7 @@ public class AvocadoFactory extends FoodFactory {
 
     @Override
     Food getFood(double price, String name, DietaryRestriction.DietPlan dietPlan) {
-        return new Burger(price, name, CarbFactory.getInstance().getMacronutrient(dietPlan),
+        return new Avocado(price, name, CarbFactory.getInstance().getMacronutrient(dietPlan),
                 ProteinFactory.getInstance().getMacronutrient(dietPlan), FatFactory.getInstance().getMacronutrient(dietPlan), this);
     }
 }

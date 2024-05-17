@@ -11,7 +11,7 @@ public class WaffleFactory extends FoodFactory {
 
     @Override
     Food getFood(double price, String name, DietaryRestriction.DietPlan dietPlan) {
-        return new Pasta(price, name, CarbFactory.getInstance().getMacronutrient(dietPlan),
+        return new Waffle(price, name, CarbFactory.getInstance().getMacronutrient(dietPlan),
                 ProteinFactory.getInstance().getMacronutrient(dietPlan), FatFactory.getInstance().getMacronutrient(dietPlan), this);
     }
 }
