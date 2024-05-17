@@ -27,11 +27,11 @@ public class Customer {
         this.address = address;
     }
 
-    public County.Area getOperatingCountry() {
+    public County.Area getCounty() {
         return county;
     }
 
-    public void setOperatingCounty(County.Area county) {
+    public void setCounty(County.Area county) {
         this.county = county;
     }
 
