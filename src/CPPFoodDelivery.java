@@ -35,11 +35,19 @@ class CPPFoodDelivery {
         // Check if parameters are registered
         if (!restaurants.contains(restaurant) || !customers.contains(customer))
         {
-            System.out.println("Restaurant or customer not registered with system.");
+            System.out.println("Restaurant " + restaurant.getName() +
+                    " or customer " + customer.getName() + " not registered with system.");
             return;
         }
 
         SimulatedTime currentTime = SimulatedTime.getInstance();
+
+        // Check if restaurant is open
+        if (!TimeStamp.isWithinRange(currentTime.toTimeStamp(), restaurant.getOpenTime(), restaurant.getCloseTime()))
+        {
+            System.out.println(restaurant.getName() + " is closed!");
+            return;
+        }
 
         System.out.println("Order placed with " + restaurant.getName() + " at " + currentTime);
         Order order = new Order(restaurant, customer, findDriver(new TimeStamp(currentTime.getHour(), currentTime.getMinutes())));
