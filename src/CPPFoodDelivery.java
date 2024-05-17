@@ -9,6 +9,7 @@ class CPPFoodDelivery {
     private final List<Driver> drivers = new ArrayList<>();
 
     private CPPFoodDelivery() {
+        registerRestaurant(new Chilis("Chili's", "001", County.Area.LA_COUNTY, 8, 20, "Tex-Mex"));
     }
 
     public static CPPFoodDelivery getInstance() {
@@ -30,15 +31,10 @@ class CPPFoodDelivery {
         drivers.add(driver);
     }
 
-    public void placeOrder(Restaurant restaurant, Customer customer, String[] foodNames)
+    public void placeOrder(String restaurantName, String customerName, String[] foodNames)
     {
-        // Check if parameters are registered
-        if (!restaurants.contains(restaurant) || !customers.contains(customer))
-        {
-            System.out.println("Restaurant " + restaurant.getName() +
-                    " or customer " + customer.getName() + " not registered with system.");
-            return;
-        }
+        Restaurant restaurant = findRestaurant(restaurantName);
+        Customer customer = findCustomer(customerName);
 
         SimulatedTime currentTime = SimulatedTime.getInstance();
 
@@ -71,6 +67,45 @@ class CPPFoodDelivery {
         {
             System.out.println("[" + food.getName() + "]");
         }
+    }
+
+    public void displayRegisteredRestaurants()
+    {
+        System.out.println("Registered restaurants: ");
+        for (Restaurant restaurant : restaurants)
+        {
+            System.out.println(restaurant.getName() + " open "
+                    + restaurant.getOpenTime() + " to " + restaurant.getCloseTime() + ".");
+        }
+    }
+
+
+    private Restaurant findRestaurant(String restaurantName)
+    {
+        for (Restaurant restaurant : restaurants)
+        {
+            if (restaurant.getName().equals(restaurantName))
+            {
+                return restaurant;
+            }
+        }
+
+        System.out.println("Restaurant " + restaurantName + " not found!");
+        return null;
+    }
+
+    private Customer findCustomer(String customerName)
+    {
+        for (Customer customer : customers)
+        {
+            if (customer.getName().equals(customerName))
+            {
+                return customer;
+            }
+        }
+
+        System.out.println("Customer " + customerName + " not found!");
+        return null;
     }
 
     private Driver findDriver(County.Area county)
