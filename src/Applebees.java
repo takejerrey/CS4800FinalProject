@@ -1,12 +1,11 @@
-public class Chilis extends Restaurant
+public class Applebees extends Restaurant
 {
-    public Chilis(String name, String address, County.Area operatingCounty, int openingHour, int closingHour, String cuisineType)
+    public Applebees(String name, String address, County.Area operatingCounty, int openingHour, int closingHour, String cuisineType)
     {
         super(name, address, operatingCounty, openingHour, closingHour, cuisineType);
 
         // Adding protein
         addMenuItem(BurgerFactory.getInstance().getFood(1.00, "Burger", DietaryRestriction.DietPlan.NO_RESTRICTION));
-        addToppingItem("Burger", "Cheese");
         addToppingItem("Burger", "Bacon");
         addMenuItem(ChickenFactory.getInstance().getFood(3.00, "Chicken Strips", DietaryRestriction.DietPlan.PALEO));
         addToppingItem("Chicken Strips", "BBQ");
@@ -28,12 +27,12 @@ public class Chilis extends Restaurant
         String newToppingName = toppingName + " " + existingMenuItem.getName();
 
         addition = switch (toppingName)
-        {
-            case "Cheese" -> new Cheese(existingMenuItem, newToppingName, 1.00);
-            case "Bacon" -> new Bacon(existingMenuItem, newToppingName, 1.50);
-            case "BBQ" -> new BBQ(existingMenuItem, newToppingName, 1.00);
-            default -> null;
-        };
+                {
+                    case "Cheese" -> new Cheese(existingMenuItem, newToppingName, 1.00);
+                    case "Bacon" -> new Bacon(existingMenuItem, newToppingName, 1.50);
+                    case "BBQ" -> new BBQ(existingMenuItem, newToppingName, 1.00);
+                    default -> null;
+                };
 
         super.getRestaurantMenu().addToppingItem(addition);
     }
