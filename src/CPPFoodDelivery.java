@@ -21,14 +21,17 @@ class CPPFoodDelivery {
 
     public void registerCustomer(Customer customer) {
         customers.add(customer);
+        System.out.println("Customer registered: " + customer.getName());
     }
 
     public void registerRestaurant(Restaurant restaurant) {
         restaurants.add(restaurant);
+        System.out.println("Restaurant registered: " + restaurant.getName());
     }
 
     public void registerDriver(Driver driver) {
         drivers.add(driver);
+        System.out.println("Driver registered: " + driver.getName());
     }
 
     public void placeOrder(String restaurantName, String customerName, String[] foodNames)
@@ -57,7 +60,12 @@ class CPPFoodDelivery {
             return;
         }
 
-        System.out.println("Order placed by " + customer.getName() + " with " + restaurant.getName() + " at " + currentTime);
+        System.out.println("\n==================== Order Details ====================");
+        System.out.println("Order placed by: " + customer.getName());
+        System.out.println("Restaurant: " + restaurant.getName());
+        System.out.println("Order time: " + currentTime);
+        System.out.println("Driver assigned: " + driver.getName());
+        System.out.println("=======================================================");
 
         Order order = new Order(restaurant, customer, driver);
 
@@ -68,28 +76,26 @@ class CPPFoodDelivery {
             order.addFood(food);
         }
 
-        System.out.println("Order cost: $" + String.format("%.2f", order.getTotalOrderCost()));
+        System.out.println("Total Order Cost: $" + String.format("%.2f", order.getTotalOrderCost()));
 
         order.simulatePickup();
 
         order.simulateDelivery();
 
-        System.out.println("Order contents: ");
-
-        for (Food food : order.getFoodItems())
-        {
-            System.out.println("[" + food.getName() + "]");
+        System.out.println("Order Contents:");
+        for (Food food : order.getFoodItems()) {
+            System.out.println(" - " + food.getName());
         }
+        System.out.println("=======================================================\n");
     }
 
     public void displayRegisteredRestaurants()
     {
-        System.out.println("Registered restaurants: ");
-        for (Restaurant restaurant : restaurants)
-        {
-            System.out.println(restaurant.getName() + " open "
-                    + restaurant.getOpenTime() + " to " + restaurant.getCloseTime() + ".");
+        System.out.println("\n================ Registered Restaurants ================");
+        for (Restaurant restaurant : restaurants) {
+            System.out.println(restaurant.getName() + " (Open " + restaurant.getOpenTime() + " to " + restaurant.getCloseTime() + ")");
         }
+        System.out.println("=======================================================\n");
     }
 
 
