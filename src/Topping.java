@@ -1,15 +1,18 @@
-public abstract class Topping implements Food {
-    private Food food;
-    private String name;
+public abstract class Topping extends Food {
+    private final Food food;
+    private final String name;
+    private final double toppingPrice;
     
-    public Topping(Food food, String name){ 
+    public Topping(Food food, String name, double toppingPrice){
+        super(food.getPrice(), food.getName(), food.getCarb(), food.getProtein(), food.getFat());
         this.food = food;
         this.name = name;
+        this.toppingPrice = toppingPrice;
     } 
 
     @Override 
     public double getPrice() {
-        return food.getPrice();
+        return food.getPrice() + toppingPrice;
     }
 
     @Override

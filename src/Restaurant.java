@@ -1,44 +1,32 @@
-public class Restaurant {
-    private String name;
-    private String address;
-    private County.Area operatingCounty;
-    private TimeStamp openTime;
-    private TimeStamp closeTime;
-    private String cuisineType;
-    private Menu restaurantMenu;
+public abstract class Restaurant {
+    private final String name;
+    private final String address;
+    private final County.Area operatingCounty;
+    private final TimeStamp openTime;
+    private final TimeStamp closeTime;
+    private final String cuisineType;
+    private final Menu restaurantMenu;
 
-    public Restaurant(String name, String address, County.Area operatingCounty, int openingHour, int closingHour, String cuisineType, Menu restaurantMenu) {
+    public Restaurant(String name, String address, County.Area operatingCounty, int openingHour, int closingHour, String cuisineType) {
         this.name = name;
         this.address = address;
         this.operatingCounty = operatingCounty;
         this.openTime = new TimeStamp(openingHour, 0);
         this.closeTime = new TimeStamp(closingHour, 0);
         this.cuisineType = cuisineType;
-        this.restaurantMenu = restaurantMenu;
+        this.restaurantMenu = new Menu();
     }
 
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public String getAddress() {
         return address;
     }
 
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
     public County.Area getOperatingCounty() {
         return operatingCounty;
-    }
-
-    public void setOperatingCounty(County.Area operatingCounty) {
-        this.operatingCounty = operatingCounty;
     }
 
     public TimeStamp getOpenTime()
@@ -46,34 +34,49 @@ public class Restaurant {
         return openTime;
     }
 
-    public void setOpenTime(TimeStamp openTime)
-    {
-        this.openTime = openTime;
-    }
-
     public TimeStamp getCloseTime()
     {
         return closeTime;
-    }
-
-    public void setCloseTime(TimeStamp closeTime)
-    {
-        this.closeTime = closeTime;
     }
 
     public String getCuisineType() {
         return cuisineType;
     }
 
-    public void setCuisineType(String cuisineType) {
-        this.cuisineType = cuisineType;
-    }
-
     public Menu getRestaurantMenu() {
         return restaurantMenu;
     }
 
-    public void setRestaurantMenu(Menu restaurantMenu) {
-        this.restaurantMenu = restaurantMenu;
+    /**
+     * Checks for food in both normal existing menu items and existing topping items.
+     */
+    public Food getFoodByName(String name)
+    {
+        name = name.toLowerCase();
+        for (Food food : restaurantMenu.getMenuItems())
+        {
+            if (food.getName().toLowerCase().equals(name))
+            {
+                return food;
+            }
+        }
+
+        for (Topping topping : restaurantMenu.getExtraToppings())
+        {
+            if (topping.getName().toLowerCase().equals(name))
+            {
+                return topping;
+            }
+        }
+
+        System.out.println("Food " + name + " not found!");
+        return null;
     }
+
+    public void addMenuItem(Food food)
+    {
+        restaurantMenu.addMenuItem(food);
+    }
+
+    abstract public void addToppingItem(String foodName, String toppingName);
 }
