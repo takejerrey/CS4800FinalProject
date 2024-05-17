@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-class CPPFoodDelivery {
+public class CPPFoodDelivery {
     private static CPPFoodDelivery instance;
     private final List<Customer> customers = new ArrayList<>();
     private final List<Restaurant> restaurants = new ArrayList<>();
@@ -34,7 +34,11 @@ class CPPFoodDelivery {
         System.out.println("Driver registered: " + driver.getName());
     }
 
-    public void placeOrder(String restaurantName, String customerName, String[] foodNames)
+    /**
+     * Places an order within the CPPFoodDelivery app.
+     * @return Returns true if the order was successfully fulfilled, and false otherwise.
+     */
+    public boolean placeOrder(String restaurantName, String customerName, String[] foodNames)
     {
         Restaurant restaurant = findRestaurant(restaurantName);
         Customer customer = findCustomer(customerName);
@@ -43,21 +47,21 @@ class CPPFoodDelivery {
 
         if (restaurant == null || customer == null)
         {
-            return;
+            return false;
         }
 
         // Check if restaurant is open
         if (!TimeStamp.isWithinRange(currentTime.toTimeStamp(), restaurant.getOpenTime(), restaurant.getCloseTime()))
         {
             System.out.println(restaurant.getName() + " is closed!");
-            return;
+            return false;
         }
 
         Driver driver = findDriver(restaurant.getOperatingCounty());
 
         if (driver == null)
         {
-            return;
+            return false;
         }
 
         System.out.println("\n==================== Order Details ====================");
@@ -87,6 +91,8 @@ class CPPFoodDelivery {
             System.out.println(" - " + food.getName());
         }
         System.out.println("=======================================================\n");
+
+        return true;
     }
 
     public void displayRegisteredRestaurants()
@@ -150,6 +156,14 @@ class CPPFoodDelivery {
         }
 
         return validDrivers.get(new Random().nextInt(validDrivers.size()));
+    }
+
+    /**
+     * Resets instance, necessary for testing.
+     */
+    public static void resetInstance()
+    {
+        instance = null;
     }
 
     public List<Customer> getCustomers()

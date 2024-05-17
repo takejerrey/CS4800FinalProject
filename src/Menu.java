@@ -1,8 +1,8 @@
 import java.util.ArrayList;
 
 public class Menu {
-    private ArrayList<Food> menuItems;
-    private ArrayList<Topping> extraToppings;
+    private final ArrayList<Food> menuItems;
+    private final ArrayList<Topping> extraToppings;
 
     public Menu() {
         menuItems = new ArrayList<Food>();

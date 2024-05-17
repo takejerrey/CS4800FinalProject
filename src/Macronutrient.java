@@ -1,5 +1,5 @@
 public abstract class Macronutrient {
-    private String name;
+    private final String name;
 
     public Macronutrient(String name) {
         this.name = name;
