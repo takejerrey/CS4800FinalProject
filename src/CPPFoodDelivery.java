@@ -9,7 +9,7 @@ class CPPFoodDelivery {
     private final List<Driver> drivers = new ArrayList<>();
 
     private CPPFoodDelivery() {
-        registerRestaurant(new Chilis("Chili's", "001", County.Area.LA_COUNTY, 8, 20, "Tex-Mex"));
+
     }
 
     public static CPPFoodDelivery getInstance() {
