@@ -79,4 +79,12 @@ public class SimulatedTime
     {
         return new TimeStamp(hour, minutes);
     }
+
+    /**
+     * Used for testing.
+     */
+    public static void resetInstance()
+    {
+        instance = null;
+    }
 }
