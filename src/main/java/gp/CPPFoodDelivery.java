@@ -67,7 +67,7 @@ public class CPPFoodDelivery {
         }
 
         System.out.println("\n==================== Order Details ====================");
-        System.out.println("Order placed by: " + customer.getName());
+        System.out.println("Order placed by: " + customer.getName() + " under " + customer.getDiet() + " diet plan.");
         System.out.println("Restaurant: " + restaurant.getName() + " (" + restaurant.getOperatingCounty() + ")");
         System.out.println("Order time: " + currentTime.toTimeStamp());
         System.out.println("Driver assigned: " + driver.getName() + " (" + driver.getOperatingCounty() + ")");
@@ -88,9 +88,10 @@ public class CPPFoodDelivery {
 
         order.simulateDelivery();
 
-        System.out.println("Order Contents:");
+        System.out.println("Order Contents (" + customer.getDiet() + "):");
         for (Food food : order.getFoodItems()) {
-            System.out.println(" - " + food.getName());
+            System.out.println(" - " + food.getName()
+                    + " with macros: [" + food.getCarb() + ", " + food.getProtein() + ", " + food.getFat() + "]");
         }
         System.out.println("=======================================================\n");
 
