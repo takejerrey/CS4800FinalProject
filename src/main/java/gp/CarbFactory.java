@@ -21,7 +21,7 @@ public class CarbFactory extends MacronutrientFactory {
             case PALEO:
                 return new Carb("Pistachio");
             case VEGAN:
-                num = rand.nextInt();
+                num = rand.nextInt(4);
                 switch (num) {
                     case 0:
                         return new Carb("Bread");
